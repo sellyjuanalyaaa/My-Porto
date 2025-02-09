@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/YOUR-FONTAWESOME-KIT.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* Animasi Typewriter */
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            color: #1D4ED8;
+            text-shadow: 0 0 8px rgba(29, 78, 216, 0.7), 0 0 15px rgba(29, 78, 216, 0.5);
+            display: inline-block;
+            border-right: 0.15em solid orange;
+        }
+
+        /* Animasi floating untuk gambar */
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        #typewriter-container {
+        min-height: 20px; /* Sesuaikan tinggi minimal sesuai kebutuhan */
+        }
+        .group:hover .tooltip {
+        opacity: 1;
+        transform: translateY(-10px);
+        }
+         /* Custom CSS untuk hover effect */
+        .skill-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-detail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(29, 78, 216, 0.9); /* Warna biru dengan opacity */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 0.5rem;
+        }
+
+        .skill-card:hover .skill-detail {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 overflow-y-auto">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+        <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+            <a href="/index.html" class="text-xl font-bold text-gray-800">My Portfolio</a>
+            
+            <!-- Toggle Button -->
+            <button id="menu-toggle" class="md:hidden text-gray-800 focus:outline-none text-2xl">
+                ☰
+            </button>
+
+            <!-- Menu Items -->
+            <div id="menu" class="hidden md:flex space-x-6">
+                <a href="/index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Home</a>
+                <a href="/about" class="text-gray-700 hover:text-blue-600 transition duration-300">About</a>
+                <a href="/portofolio" class="text-gray-700 hover:text-blue-600 transition duration-300">Portfolio</a>
+
+                <!-- Dropdown -->
+                <div class="relative group">
+                    <button id="dropdown-btn" class="text-gray-700 hover:text-blue-600 items-center">
+                        More 
+                        <span id="dropdown-arrow" class="ml-1 transition duration-300">▾</span>
+                    </button>
+                    <div id="dropdown" class="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-md hidden transition-all duration-300">
+                        <a href="/contact" class="block px-4 py-2 hover:bg-gray-100 transition duration-300">Contact</a>
+                        <a href="/galery" class="block px-4 py-2 hover:bg-gray-100 transition duration-300">Gallery</a>
+                        <a href="/sosmed" class="block px-4 py-2 hover:bg-gray-100 transition duration-300">Social Media</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-4 py-3 space-y-2 shadow-md absolute w-full top-full left-0 transition-all duration-300 ">
+            <a href="/index.html" class="block text-gray-700 hover:text-blue-600 transition duration-300">Home</a>
+            <a href="/about" class="block text-gray-700 hover:text-blue-600 transition duration-300">About</a>
+            <a href="/portofolio" class="block text-gray-700 hover:text-blue-600 transition duration-300">Portfolio</a>
+            <a href="/contact" class="block text-gray-700 hover:text-blue-600 transition duration-300">Contact</a>
+            <a href="/galery" class="block text-gray-700 hover:text-blue-600 transition duration-300">Gallery</a>
+            <a href="/sosmed" class="block text-gray-700 hover:text-blue-600 transition duration-300">Social Media</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="container top-0 left-0 right-0 mx-auto px-4 pt-24 pb-12 transition-all duration-300">
+        <div class="flex flex-col md:flex-row container mx-auto px-4 py-8 mt-16 space-y-8 md:space-y-0 md:space-x-8 items-center">
+            <!-- Teks di kiri untuk desktop -->
+            <div class="md:flex-1 order-2 md:order-1 text-center md:text-left md:ml-16">
+                <p class="text-lg md:text-xl mb-4">Hello, World!</p>
+                <h3 class="text-xl md:text-4xl font-bold mb-4">I'm Sellyjuan Alya Rosalina</h3>
+                <div id="typewriter-container" class="space-y-2 font-bold text-2xl mb-8 min-h-[20px]">
+                    <!-- Teks akan dimasukkan secara dinamis oleh JavaScript -->
+                </div>
+                <p class="text-lg mb-8">Welcome to My Personal Website.</p>
+            </div>
+            <!-- Gambar di kanan untuk desktop -->
+            <div class="md:flex-1 order-1 md:order-2 flex justify-center md:justify-end">
+                <div class="relative" style="animation: floating 3s ease-in-out infinite;">
+                    <!-- Efek Glow -->
+                    <div class="absolute inset-0 bg-blue-500 blur-3xl opacity-15 scale-90 transition-all duration-300 rounded-full -z-10"></div>
+                    <!-- Gambar -->
+                    <img src="asset/selljuan.png" alt="My Image" class="md:w-96 md:h-96 relative z-10">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center mb-6">Skills</h2>
+        <p class="text-center text-gray-600 mb-10">Berikut adalah beberapa tools telah saya gunakan dalam proyek dalam penengembangan web.</p>
+    
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+            <!-- Skill Cards Section -->
+                    <!-- HTML5 -->
+                    <div class="skill-card flex flex-col items-center p-4 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-300">
+                        <i class="fab fa-html5 text-orange-500 text-5xl"></i>
+                        <p class="mt-3 text-lg font-semibold">HTML5</p>
+                        <div class="skill-detail">
+                            <p class="text-center">Advanced</p>
+                        </div>
+                    </div>
+        
+                    <!-- CSS3 -->
+                    <div class="skill-card flex flex-col items-center p-4 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-300">
+                        <i class="fab fa-css3-alt text-blue-500 text-5xl"></i>
+                        <p class="mt-3 text-lg font-semibold">CSS3</p>
+                        <div class="skill-detail">
+                            <p class="text-center">Advanced</p>
+                        </div>
+                    </div>
+        
+                    <!-- PHP -->
+                    <div class="skill-card flex flex-col items-center p-4 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-300">
+                        <i class="fab fa-php text-purple-500 text-5xl"></i>
+                        <p class="mt-3 text-lg font-semibold">PHP</p>
+                        <div class="skill-detail">
+                            <p class="text-center">Intermediate</p>
+                        </div>
+                    </div>
+        
+                    <!-- JavaScript -->
+                    <div class="skill-card flex flex-col items-center p-4 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-300">
+                        <i class="fab fa-js-square text-yellow-500 text-5xl"></i>
+                        <p class="mt-3 text-lg font-semibold">JavaScript</p>
+                        <div class="skill-detail">
+                            <p class="text-center">Intermediate</p>
+                        </div>
+                    </div>
+        
+                    <!-- Bootstrap -->
+                    <div class="skill-card flex flex-col items-center p-4 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-300">
+                        <i class="fab fa-bootstrap text-purple-500 text-5xl"></i>
+                        <p class="mt-3 text-lg font-semibold">Bootstrap</p>
+                        <div class="skill-detail">
+                            <p class="text-center">Intermediate</p>
+                        </div>
+                    </div>
+        
+                    <!-- MySQL -->
+                    <div class="skill-card flex flex-col items-center p-4 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-300">
+                        <i class="fas fa-database text-gray-500 text-5xl"></i>
+                        <p class="mt-3 text-lg font-semibold">MySQL</p>
+                        <div class="skill-detail">
+                            <p class="text-center">Intermediate</p>
+                        </div>
+                    </div>
+        
+                    <!-- Tailwind -->
+                    <div class="skill-card flex flex-col items-center p-4 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-300">
+                        <i class="fab fa-css3-alt text-blue-500 text-5xl"></i>
+                        <p class="mt-3 text-lg font-semibold">Tailwind</p>
+                        <div class="skill-detail">
+                            <p class="text-center">Intermediate</p>
+                        </div>
+                    </div>
+        
+                    <!-- Java -->
+                    <div class="skill-card flex flex-col items-center p-4 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-300">
+                        <i class="fab fa-figma text-pink-500 text-5xl"></i>
+                        <p class="mt-3 text-lg font-semibold">Figma</p>
+                        <div class="skill-detail">
+                            <p class="text-center">Intermediate</p>
+                        </div>
+                    </div>
+
+                    <!-- WordPress -->
+                    <div class="skill-card flex flex-col items-center p-4 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-300">
+                        <i class="fab fa-wordpress text-blue-500 text-5xl"></i>
+                        <p class="mt-3 text-lg font-semibold">WordPress</p>
+                        <div class="skill-detail">
+                            <p class="text-center">Intermediate</p>
+                        </div>
+                    </div>
+                    <!-- Canva -->
+                    <!-- <div class="skill-card flex flex-col items-center p-4 bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-300">
+                        <i class="fab fa-canva text-green-500 text-5xl"></i>
+                        <p class="mt-3 text-lg font-semibold">Canva</p>
+                        <div class="skill-detail">
+                            <p class="text-center">Intermediate</p>
+                        </div>
+                    </div> -->
+                </div>        
+    </section>
+    
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center mb-6">About Me</h2>
+        <p class="text-center text-gray-600 mb-10">Perkenalan singkat dan perjalanan organisasi saya.</p>
+    
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Perkenalan & Keahlian -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-2xl font-bold mb-4">Perkenalan</h3>
+                <p class="text-gray-700 mb-4">Mahasiswa semester 3 Jurusan Informatika di Universitas Jenderal Soedirman dengan IPK 3,76. Memiliki minat dalam pengembangan perangkat lunak,  khususnya di bidang Frontend Development dengan keahlian dalam HTML, CSS, JavaScript, Tailwind CSS, Bootstrap, serta pengelolaan website menggunakan WordPress. Berpengalaman dalam organisasi di bidang pengembangan sumber daya manusia, serta berkomitmen untuk terus belajar dan beradaptasi dengan perkembangan terbaru dalam industri teknologi informasi. Mencari kesempatan untuk bergabung dengan tim yang dinamis dan inovatif untuk berkontribusi dalam dunia teknologi, dengan kemampuan analitis dan problem-solving yang baik. </p>
+                <h3 class="text-2xl font-bold mb-4">Skills</h3>
+                <ul class="list-disc list-inside text-gray-700">
+                    <li>Kemampuan personal: Komunikasi, kepemimpinan, kerja sama tim, manajemen waktu, dan problem solving.</li>
+                    <li>Bahasa: Indonesia, Inggris (Menengah).</li>
+                    <li>Aplikasi Office: Menguasai Ms.Office (Microsoft Word, Excel, Power Point), Google Service  
+                        (Google Docs, Forms, Spreadsheet), Edit (PicsArt, Canva, Figma).</li>
+                </ul>
+            </div>
+    
+            <!-- Perjalanan Organisasi -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-2xl font-bold mb-4">Organisasi</h3>
+                <div class="relative border-l-4 border-blue-500 pl-6">
+                    <!-- Timeline Item -->
+                    <div class="mb-6">
+                        <span class="absolute -left-2.5 bg-blue-500 h-5 w-5 rounded-full"></span>
+                        <h4 class="text-lg font-semibold">SEEO - Koordinator PDSM</h4>
+                        <p class="text-gray-600">Mengembangkan sumber daya manusia di organisasi.</p>
+                        <span class="text-sm text-gray-500">Februari 2025 - Sekarang</span>
+                    </div>
+                    <!-- Timeline Item -->
+                    <div class="mb-6">
+                        <span class="absolute -left-2.5 bg-blue-500 h-5 w-5 rounded-full"></span>
+                        <h4 class="text-lg font-semibold">Soedirman Technophoria - Staff Humas</h4>
+                        <p class="text-gray-600">Menjalin hubungan yang baik dengan berbagai pihak.</p>
+                        <span class="text-sm text-gray-500">September - November 2024</span>
+                    </div>
+                    <div class="mb-6">
+                        <span class="absolute -left-2.5 bg-blue-500 h-5 w-5 rounded-full"></span>
+                        <h4 class="text-lg font-semibold">Informatics Championship - Staff Humas</h4>
+                        <p class="text-gray-600">Menjalin hubungan yang baik dengan berbagai pihak.</p>
+                        <span class="text-sm text-gray-500">September - Oktober 2024</span>
+                    </div>
+                    <!-- Timeline Item -->
+                    <div class="mb-6">
+                        <span class="absolute -left-2.5 bg-blue-500 h-5 w-5 rounded-full"></span>
+                        <h4 class="text-lg font-semibold">SEEO - Staff PDSM</h4>
+                        <p class="text-gray-600">Mengembangkan sumber daya manusia di organisasi.</p>
+                        <span class="text-sm text-gray-500">Februari 2024 - Desember 2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+ <!-- Projects Section -->
+<section class="container mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-center mb-6">Proyek Saya</h2>
+    <p class="text-center text-gray-600 mb-10">Berikut adalah beberapa proyek yang telah saya kerjakan.</p>
+
+    <!-- Carousel Container -->
+    <div class="relative overflow-hidden w-full">
+        <div id="carousel" class="flex transition-transform duration-500 space-x-4">
+            
+            <!-- Project Cards -->
+            <div class="w-1/3 flex-shrink-0">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden group relative">
+                    <img src="project1.jpg" alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold">Project E-commerce</h3>
+                    </div>
+                    <!-- Hover Content -->
+                    <div class="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">E-commerce Website</h3>
+                        <p class="text-gray-300 mt-2">Tools: React, Node.js, MongoDB</p>
+                        <p class="text-gray-300 mt-1">Role: Full-Stack Developer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-1/3 flex-shrink-0">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden group relative">
+                    <img src="project2.jpg" alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold">Portfolio Website</h3>
+                    </div>
+                    <!-- Hover Content -->
+                    <div class="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">Portfolio Website</h3>
+                        <p class="text-gray-300 mt-2">Tools: HTML, CSS, JavaScript</p>
+                        <p class="text-gray-300 mt-1">Role: Frontend Developer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-1/3 flex-shrink-0">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden group relative">
+                    <img src="project3.jpg" alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold">Dashboard Admin</h3>
+                    </div>
+                    <!-- Hover Content -->
+                    <div class="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">Admin Dashboard</h3>
+                        <p class="text-gray-300 mt-2">Tools: Laravel, Bootstrap</p>
+                        <p class="text-gray-300 mt-1">Role: Backend Developer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-1/3 flex-shrink-0">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden group relative">
+                    <img src="project4.jpg" alt="Project 4" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold">Blog Website</h3>
+                    </div>
+                    <!-- Hover Content -->
+                    <div class="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">Blog Website</h3>
+                        <p class="text-gray-300 mt-2">Tools: HTML, CSS, JavaScript</p>
+                        <p class="text-gray-300 mt-1">Role: Frontend Developer</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-1/3 flex-shrink-0">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden group relative">
+                    <img src="project5.jpg" alt="Project 5" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold">Landing Page</h3>
+                    </div>
+                    <!-- Hover Content -->
+                    <div class="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <h3 class="text-xl font-bold text-white">Landing Page</h3>
+                        <p class="text-gray-300 mt-2">Tools: HTML, CSS, JavaScript</p>
+                        <p class="text-gray-300 mt-1">Role: Frontend Developer</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-center mt-6 space-x-4">
+        <button id="prevBtn" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">❮</button>
+        <button id="nextBtn" class="bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition">❯</button>
+    </div>
+</section>
+
+
+<!-- footer -->
+<footer class="bg-blue-100 py-10">
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-gray-700">
+        <!-- Profile Section -->
+        <div>
+            <h3 class="text-xl font-bold">Nama Anda</h3>
+            <p class="mt-2 text-gray-600">Alamat atau deskripsi singkat.</p>
+            <p class="text-gray-600">Email: email@domain.com</p>
+            <div class="flex space-x-4 mt-3">
+                <a href="https://www.linkedin.com/in/username" target="_blank" class="hover:text-blue-500 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm13.5 11.28h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.37h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v5.58z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Explore Section -->
+        <div>
+            <h3 class="text-xl font-bold">Explore</h3>
+            <ul class="mt-2 space-y-2">
+                <li><a href="#" class="hover:underline">Home</a></li>
+                <li><a href="#" class="hover:underline">Projects</a></li>
+                <li><a href="#" class="hover:underline">Blog</a></li>
+                <li><a href="#" class="hover:underline">Contact</a></li>
+            </ul>
+        </div>
+        
+        <!-- Know More Section -->
+        <div>
+            <h3 class="text-xl font-bold">Know More</h3>
+            <ul class="mt-2 space-y-2">
+                <li><a href="#" class="hover:underline">About Me</a></li>
+                <li><a href="#" class="hover:underline">Services</a></li>
+                <li><a href="#" class="hover:underline">Testimonials</a></li>
+            </ul>
+        </div>
+        
+        <!-- Newsletter Section -->
+        <div>
+            <h3 class="text-xl font-bold">Subscribe</h3>
+            <p class="mt-2 text-gray-600">Dapatkan update terbaru dari saya.</p>
+            <div class="mt-4 flex">
+                <input type="email" placeholder="Enter your email" class="w-full px-3 py-2 border rounded-l-md focus:outline-none">
+                <button class="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-500 transition">Subscribe</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Footer -->
+    <div class="border-t mt-8 pt-4 text-center text-gray-600">
+        <p>&copy; 2025 Nama Anda. All rights reserved.</p>
+    </div>
+</footer>
+
+
+
+<!-- JavaScript for Carousel -->
+<script>
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let scrollAmount = 0;
+    const cardWidth = carousel.firstElementChild.clientWidth + 16; // Lebar kartu + margin
+    const visibleCards = 3; // Jumlah kartu yang terlihat
+    const totalCards = carousel.children.length;
+    const maxScroll = (totalCards - visibleCards) * cardWidth;
+
+    nextBtn.addEventListener('click', () => {
+        if (scrollAmount < maxScroll) {
+            scrollAmount += cardWidth;
+            carousel.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (scrollAmount > 0) {
+            scrollAmount -= cardWidth;
+            carousel.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+    });
+    <!-- JavaScript untuk Typewriter -->
+        const texts = [
+            "Tech Enthusiast",
+            "Web Designer",
+            "Frontend Developer",
+            "Informatics Student",
+        ];
+
+        const container = document.getElementById('typewriter-container');
+        container.classList.add('typewriter'); // Menambahkan kelas typewriter
+
+        let index = 0;
+        let textIndex = 0;
+        let isErasing = false;
+
+        function typeWriter() {
+            if (!isErasing && textIndex < texts[index].length) {
+                container.innerHTML = texts[index].substring(0, textIndex + 1); // Menambahkan karakter satu per satu
+                textIndex++;
+                setTimeout(typeWriter, 100); // Waktu ketikan
+            } else if (isErasing && textIndex >= 0) {
+                container.innerHTML = texts[index].substring(0, textIndex); // Menghapus karakter satu per satu
+                textIndex--;
+                setTimeout(typeWriter, 50); // Waktu penghapusan
+            } else {
+                // Waktu setelah selesai menulis atau menghapus
+                isErasing = !isErasing;
+                if (!isErasing) {
+                    index = (index + 1) % texts.length; // Berpindah ke teks berikutnya
+                }
+                setTimeout(typeWriter, isErasing ? 1500 : 500); // Waktu delay untuk transisi
+            }
+        }
+
+        typeWriter(); // Mulai animasi
+
+
+    // JavaScript for Mobile Menu
+       // Toggle Mobile Menu with Icon Change and Content Push (Mobile Only)
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const mainContent = document.getElementById('main-content');
+
+menuToggle.addEventListener('click', function () {
+    mobileMenu.classList.toggle('hidden');
+
+    if (!mobileMenu.classList.contains('hidden')) {
+        menuToggle.innerHTML = '✖';
+        // Only push content down in mobile mode
+        if (window.innerWidth < 768) {
+            mainContent.style.marginTop = mobileMenu.offsetHeight + 'px';
+        }
+    } else {
+        menuToggle.innerHTML = '☰';
+        // Reset margin in mobile mode
+        if (window.innerWidth < 768) {
+            mainContent.style.marginTop = '0px';
+        }
+    }
+});
+
+// Toggle Dropdown with Arrow Animation (No Content Push)
+        const dropdownBtn = document.getElementById('dropdown-btn');
+        const dropdown = document.getElementById('dropdown');
+        const dropdownArrow = document.getElementById('dropdown-arrow');
+
+        dropdownBtn.addEventListener('click', function (event) {
+            event.stopPropagation();
+            dropdown.classList.toggle('hidden');
+            dropdownArrow.classList.toggle('rotate-180');
+        });
+
+        // Close Dropdown and Mobile Menu When Clicking Outside
+        document.addEventListener('click', function (event) {
+            // Close Mobile Menu
+            if (!event.target.closest('#mobile-menu') && !event.target.closest('#menu-toggle')) {
+                mobileMenu.classList.add('hidden');
+                menuToggle.innerHTML = '☰';
+                // Reset margin in mobile mode
+                if (window.innerWidth < 768) {
+                    mainContent.style.marginTop = '0px';
+                }
+            }
+
+            // Close Dropdown
+            if (!event.target.closest('.relative')) {
+                dropdown.classList.add('hidden');
+                dropdownArrow.classList.remove('rotate-180');
+            }
+        });
+
+        // Handle Window Resize (Optional)
+        window.addEventListener('resize', function () {
+            // If the window is resized to desktop width, reset the margin
+            if (window.innerWidth >= 768) {
+                mainContent.style.marginTop = '0px';
+            }
+        });
+    </script>
+
+</body>
+</html>
